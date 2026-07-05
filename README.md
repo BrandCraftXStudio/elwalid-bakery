@@ -8,7 +8,7 @@ A responsive, high-performance showcase website built for **El Walid Bakery**, f
 
 ## 🚀 Live Demo / الرابط المباشر
 You can view the live website here: 
-🔗 **[elwalid-bakery.vercel.app](https://your-site.vercel.app)** *(استبدل هذا برابط فيرسيل الخاص بك)*
+🔗 **[[elwalid-bakery.vercel.app](https://alwaleed-bakery.vercel.app/)]**
 
 ---
 
