@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مخبوزات الوليد - أصالة الطعم والفخامة</title>
+    <meta name="description" content="متخصصون في صناعة القرص الطرية والقرص المحشوة بالعجوة والملبن، مع إمكانية تنفيذ كميات كبيرة من بسكوت العيد والكحك بكافة أنواعه.">
+    <!-- Google Fonts: Cairo (for UI/Text) and Amiri (for elegant classic headings) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Page Loader for a premium transition on load -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-content">
+            <h1 class="loader-title">مخبوزات الوليد</h1>
+            <div class="loader-spinner"></div>
+            <p class="loader-subtitle">جاري تحضير أشهى المخبوزات...</p>
+        </div>
+    </div>
+
+    <!-- Sticky Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <a href="#" class="logo-link">
+                    <span class="logo-gold">مخبوزات</span>
+                    <span class="logo-dark">الوليد</span>
+                </a>
+            </div>
+            
+            <!-- Quick Tagline in Header (Desktop Only) -->
+            <p class="header-tagline">متخصصون في القرص الطرية، الكحك وبسكوت العيد بمذاق لا يُنسى.</p>
+
+            <!-- Fixed Floating Shopping Cart Icon -->
+            <button class="cart-toggle-btn" id="cart-toggle-btn" aria-label="سلة المشتريات">
+                <i class="fa-solid fa-shopping-bag"></i>
+                <span class="cart-badge" id="cart-badge">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">مخبوزات الوليد</h1>
+            <p class="hero-subtitle">متخصصون في صناعة القرص الطرية والقرص المحشوة بالعجوة والملبن، مع إمكانية تنفيذ كميات كبيرة من بسكوت العيد والكحك بكافة أنواعه.</p>
+            <div class="hero-badge">
+                <i class="fa-solid fa-medal"></i> مكونات طبيعية 100% وطعم بلدي أصيل
+            </div>
+            <a href="#products-section" class="hero-cta-btn">
+                <span>استكشف الأصناف</span>
+                <i class="fa-solid fa-arrow-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Section: الأصناف -->
+    <main class="main-content" id="products-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">الأصناف</h2>
+                <div class="section-divider">
+                    <span class="divider-line"></span>
+                    <i class="fa-solid fa-wheat-awn"></i>
+                    <span class="divider-line"></span>
+                </div>
+                <p class="section-subtitle">اختر من تشكيلتنا الفاخرة من المخبوزات الطازجة المحضرة بحب وإتقان</p>
+            </div>
+
+            <!-- Products Responsive Grid -->
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be generated dynamically by script.js -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Slide-out Cart Drawer -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+    <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true">
+        <div class="cart-drawer-header">
+            <h3 class="cart-drawer-title">
+                <i class="fa-solid fa-shopping-cart"></i> سلة المشتريات
+            </h3>
+            <button class="cart-close-btn" id="cart-close-btn" aria-label="إغلاق السلة">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="cart-drawer-body">
+            <!-- Cart Items Container -->
+            <div class="cart-items-container" id="cart-items-container">
+                <!-- Cart items will be generated dynamically by script.js -->
+                <div class="empty-cart-message">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <p>السلة فارغة حالياً. أضف بعض الأصناف الشهية!</p>
+                </div>
+            </div>
+
+            <!-- Cart Footer (Order Summary, Payment, and Form) -->
+            <div class="cart-drawer-footer" id="cart-drawer-footer" style="display: none;">
+                <!-- Totals Summary -->
+                <div class="cart-summary-totals">
+                    <div class="total-row">
+                        <span>عدد الأصناف:</span>
+                        <span id="cart-total-items">0</span>
+                    </div>
+                    <div class="total-row" id="delivery-fee-row">
+                        <span>خدمة التوصيل:</span>
+                        <span><strong id="cart-delivery-fee">15</strong> جنيه</span>
+                    </div>
+                    <div class="total-row grand-total">
+                        <span>إجمالي الحساب:</span>
+                        <span><strong id="cart-total-price">0</strong> جنيه</span>
+                    </div>
+                </div>
+
+                <!-- Checkout Form -->
+                <form id="checkout-form" class="checkout-form" novalidate>
+                    <h4 class="form-section-title"><i class="fa-solid fa-motorcycle"></i> طريقة الاستلام</h4>
+                    <div class="payment-methods-grid" style="margin-bottom: 20px;">
+                        <div class="payment-method-card active" data-delivery="delivery">
+                            <div class="card-radio"></div>
+                            <div class="card-icon"><i class="fa-solid fa-truck"></i></div>
+                            <div class="card-label">توصيل للمنزل (15 ج.م)</div>
+                        </div>
+                        <div class="payment-method-card" data-delivery="pickup">
+                            <div class="card-radio"></div>
+                            <div class="card-icon"><i class="fa-solid fa-store"></i></div>
+                            <div class="card-label">استلام من المحل</div>
+                        </div>
+                    </div>
+
+                    <h4 class="form-section-title"><i class="fa-solid fa-user"></i> بيانات العميل</h4>
+                    
+                    <div class="form-group">
+                        <label for="customer-name">اسم العميل <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="customer-name" name="name" placeholder="أدخل اسمك الثنائي أو الثلاثي" required autocomplete="name">
+                        </div>
+                        <span class="error-msg" id="name-error">الرجاء إدخال اسم العميل</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-phone">رقم الهاتف المحمول <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-phone"></i>
+                            <input type="tel" id="customer-phone" name="phone" placeholder="مثال: 010XXXXXXXX" required autocomplete="tel">
+                        </div>
+                        <span class="error-msg" id="phone-error">الرجاء إدخال رقم هاتف محمول صحيح (11 رقم)</span>
+                    </div>
+
+                    <div class="form-group" id="address-group">
+                        <label for="customer-address">عنوان التوصيل <span class="required">*</span></label>
+                        <div class="input-wrapper align-start">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <textarea id="customer-address" name="address" rows="2" placeholder="المدينة، اسم الشارع" autocomplete="street-address"></textarea>
+                        </div>
+                        <span class="error-msg" id="address-error">الرجاء إدخال عنوان التوصيل</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-notes">ملاحظات إضافية (اختياري)</label>
+                        <div class="input-wrapper align-start">
+                            <i class="fa-regular fa-comment-dots"></i>
+                            <textarea id="customer-notes" name="notes" rows="2" placeholder="أي تعليمات خاصة بالطلب أو التوصيل"></textarea>
+                        </div>
+                    </div>
+
+                    <h4 class="form-section-title"><i class="fa-solid fa-credit-card"></i> طريقة الدفع</h4>
+                    
+                    <!-- Payment Methods Cards -->
+                    <div class="payment-methods-grid">
+                        <div class="payment-method-card active" data-payment="cod">
+                            <div class="card-radio"></div>
+                            <div class="card-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                            <div class="card-label">الدفع عند الاستلام</div>
+                        </div>
+                        <div class="payment-method-card" data-payment="vodafone">
+                            <div class="card-radio"></div>
+                            <div class="card-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                            <div class="card-label">فودافون كاش</div>
+                        </div>
+                    </div>
+
+                    <!-- Vodafone Cash Box (Hidden by default, shown dynamically) -->
+                    <div class="vodafone-box" id="vodafone-box" style="display: none;">
+                        <div class="vodafone-header">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span>يرجى تحويل المبلغ عبر فودافون كاش ثم رفع صورة التحويل</span>
+                        </div>
+                        <div class="vodafone-number-container">
+                            <span class="number-label">رقم فودافون كاش:</span>
+                            <div class="number-box">
+                                <strong id="vodafone-number" dir="ltr">+20 101 154 5916</strong>
+                                <button type="button" class="copy-btn" id="copy-phone-btn" title="نسخ الرقم">
+                                    <i class="fa-regular fa-copy"></i> نسخ
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group upload-group">
+                            <label for="vodafone-screenshot" class="file-upload-label">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <span>رفع صورة تحويل المبلغ <span class="required">*</span></span>
+                            </label>
+                            <input type="file" id="vodafone-screenshot" accept="image/*" class="file-upload-input">
+                            <span class="error-msg" id="screenshot-error">الرجاء رفع صورة إيصال التحويل</span>
+                            
+                            <!-- Image Preview Container -->
+                            <div class="screenshot-preview-container" id="screenshot-preview-container" style="display: none;">
+                                <p class="preview-title">معاينة الصورة المرفقة:</p>
+                                <div class="preview-wrapper">
+                                    <img id="screenshot-preview" src="" alt="صورة إيصال التحويل">
+                                    <button type="button" class="remove-preview-btn" id="remove-preview-btn" title="حذف الصورة">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Order Button -->
+                    <button type="submit" class="submit-order-btn" id="submit-order-btn">
+                        <span>إرسال وتأكيد الطلب</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Order Summary Modal -->
+    <div class="modal-overlay" id="order-modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-circle-check"></i> تم استلام طلبك بنجاح!</h3>
+            </div>
+            <div class="modal-body">
+                <p class="modal-intro">نشكرك على ثقتك بمخبوزات الوليد. إليك ملخص تفاصيل طلبك:</p>
+                
+                <div class="modal-info-section">
+                    <h4>بيانات العميل</h4>
+                    <ul class="modal-client-details">
+                        <li><strong>الاسم:</strong> <span id="modal-cust-name"></span></li>
+                        <li><strong>رقم الهاتف:</strong> <span id="modal-cust-phone"></span></li>
+                        <li><strong>عنوان التوصيل:</strong> <span id="modal-cust-address"></span></li>
+                        <li id="modal-cust-notes-row" style="display: none;"><strong>ملاحظات:</strong> <span id="modal-cust-notes"></span></li>
+                    </ul>
+                </div>
+
+                <div class="modal-info-section">
+                    <h4>المنتجات المطلوبة</h4>
+                    <div class="modal-products-table-wrapper">
+                        <table class="modal-products-table">
+                            <thead>
+                                <tr>
+                                    <th>الصنف</th>
+                                    <th>الكمية</th>
+                                    <th>السعر</th>
+                                    <th>المجموع</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modal-products-list">
+                                <!-- Generated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-total-price">
+                        <strong>الإجمالي الكلي:</strong> <span id="modal-total-price-val"></span> جنيه مصري
+                    </div>
+                </div>
+
+                <div class="modal-info-section">
+                    <h4>طريقة الدفع</h4>
+                    <p class="modal-payment-method" id="modal-payment-method-val"></p>
+                    
+                    <!-- Vodafone Cash image thumbnail in summary -->
+                    <div id="modal-screenshot-summary" style="display: none;">
+                        <p class="summary-screenshot-label">صورة التحويل المرفوعة:</p>
+                        <div class="summary-screenshot-wrapper">
+                            <img id="modal-screenshot-img" src="" alt="صورة إيصال التحويل في ملخص الطلب">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-btn-confirm" id="modal-btn-close" style="background-color: #25D366; border-color: #25D366; color: white; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i>
+                    <span>تأكيد وإرسال عبر واتساب</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast for micro-interactions -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check toast-icon"></i>
+        <span class="toast-message" id="toast-message">تمت الإضافة إلى السلة بنجاح!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3 class="footer-title">مخبوزات الوليد</h3>
+                <p class="footer-description">جودة لا تضاهى، طعم بلدي أصيل، وخبرة طويلة في صناعة أشهى المخبوزات والكحك والقرص.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>للتواصل والطلبات</h4>
+                <ul>
+                    <li><i class="fa-solid fa-phone"></i> <span dir="ltr">+20 101 154 5916</span></li>
+                    <li><i class="fa-solid fa-envelope"></i> contact@alwaleedbakery.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> دسوق / شارع (16) / أمام مسجد التوحيد</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 مخبوزات الوليد. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
